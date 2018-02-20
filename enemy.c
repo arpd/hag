@@ -15,6 +15,7 @@ enemy_t *enemy_add(int type, char pic, int hp, int y, int x) {
     e->y = y;
     e->x = x;
     e->node = list_add_tail(enemy_list, e);
+    return e;
 }
 
 enemy_t *enemy_at(int y, int x) {
@@ -23,7 +24,7 @@ enemy_t *enemy_at(int y, int x) {
     }
     list_traverse(enemy_list->head);
     enemy_t *e;
-    while (e = list_traverse(0)) {
+    while ((e = list_traverse(0))) {
         if (e->y == y && e->x == x) {
             return e;
         }
@@ -49,7 +50,7 @@ void enemy_draw(WINDOW *win, int y, int x) {
     int x0 = x - (w/2);
     list_traverse(enemy_list->head);
     enemy_t *e;
-    while (e = list_traverse(0)) {
+    while ((e = list_traverse(0))) {
         int ey = e->y - y0;
         int ex = e->x - x0;
         if (ey >= 0 && ex >= 0 && ey < h && ex < w) {

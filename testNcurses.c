@@ -84,18 +84,17 @@ int main()
     enemy_add(0, 'X', 5, 2, 49);
     enemy_add(0, 'X', 5, 11, 8);
 
+    int w0, h0;
+    getmaxyx(my_wins[0], h0, w0); //MACRO, changes w and h
     while(1) {
-        refresh();
         wclear(my_wins[0]);
         map_print(my_wins[0], y, x);
         enemy_draw(my_wins[0], y, x);
-        int w0, h0;
-        getmaxyx(my_wins[0], h0, w0); //MACRO, changes w and h
         mvwprintw(my_wins[0], h0/2, w0/2, "o");
-        wrefresh(my_wins[0]);
+        //wrefresh(my_wins[0]);
         int xn = x, yn = y;
         int ch = ERR;
-        if (ch = getch(), ch != ERR) {
+        if (ch = wgetch(my_wins[0]), ch != ERR) {
             switch (ch) {
                 case 'j':
                     yn++;
