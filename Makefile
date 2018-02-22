@@ -1,6 +1,6 @@
 # Declaration of variables
 CC = gcc 
-CC_FLAGS=-lpanel -lncurses
+CC_FLAGS=-lpanel -lncurses -Wall
  
 # File names
 EXEC = tests
